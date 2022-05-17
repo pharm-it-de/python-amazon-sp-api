@@ -129,7 +129,7 @@ class Client(BaseClient):
                       proxies=self.proxies)
         return self._check_response(res, res_no_data)
 
-    def _check_response(self, res, res_no_data: bool = False) -> ApiResponse:
+    def _check_response(self, res, res_no_data) -> ApiResponse:
         if (self.method == 'DELETE' or res_no_data) and 200 <= res.status_code < 300:
             try:
                 js = res.json() or {}
